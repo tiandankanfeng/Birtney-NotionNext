@@ -14,13 +14,13 @@ const BLOG = {
 
   // 3.14.1 版本后，欢迎语在此配置，英文逗号隔开 ,  即可支持多个欢迎语打字效果。
   // GREETING_WORDS: process.env.NEXT_PUBLIC_GREETING_WORDS || '记录点滴生活，开启醒悟人生，欢迎来到我的博客🎉，很高兴认识你',
-  GREETING_WORDS: process.env.NEXT_PUBLIC_GREETING_WORDS || '在这个舌燥的世界里，我只想活出真实的自己',
+  GREETING_WORDS: process.env.NEXT_PUBLIC_GREETING_WORDS || 'How big would you dream if you knew you could not fail?',
 
   CUSTOM_MENU: process.env.NEXT_PUBLIC_CUSTOM_MENU || true, // 支持 Menu 类型，从 3.12.0 版本起，各主题将逐步支持灵活的二级菜单配置，替代了原来的 Page 类型，此配置是试验功能、默认关闭。
 
-  AUTHOR: process.env.NEXT_PUBLIC_AUTHOR || 'Birtney', // 您的昵称 例如 tangly1024
+  AUTHOR: process.env.NEXT_PUBLIC_AUTHOR || 'birtney', // 您的昵称 例如 tangly1024
   BIO: process.env.NEXT_PUBLIC_BIO || '沉潜修身，厚积薄发', // 作者简介
-  LINK: process.env.NEXT_PUBLIC_LINK || 'https://liangye-xo.xyz/', // 网站地址
+  LINK: process.env.NEXT_PUBLIC_LINK || 'https://birtney.link', // 网站地址
   KEYWORDS: process.env.NEXT_PUBLIC_KEYWORD || 'Notion, 博客', // 网站关键词 英文逗号隔开
 
   // 社交链接，不需要可留空白，例如 CONTACT_WEIBO:''
