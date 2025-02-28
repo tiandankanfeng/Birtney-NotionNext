@@ -1,7 +1,7 @@
-// 这里编写自定义js脚本；将被静态引入到页面中
+// 这里编写自定义 js 脚本；将被静态引入到页面中
         // ==UserScript==
 // @name                #相亲相爱一嘉人#
-// @description         在哔站右下角添加嘉然小姐的live2d模型
+// @description         在哔站右下角添加嘉然小姐的 live2d 模型
 // @version             1.0.1
 // @namespace           https://github.com/journey-ad
 // @author              journey-ad
@@ -16,7 +16,7 @@
   'use strict';
 
   if (inIframe()) {
-    console.log('iframe中不加载');
+    console.log('iframe 中不加载');
     return false;
   }
 
@@ -121,13 +121,13 @@
     const haruna = document.getElementById('my-dear-haruna-vm')
     haruna && haruna.remove()
 
-    // 初始化pio
+    // 初始化 pio
     _pio_initialize_pixi()
 
     // 添加自定义样式
     addStyle(CUSTOM_CSS)
 
-    加载圣·嘉然()
+    loadJiaRan()
 
     console.log("all done.")
   });
@@ -140,7 +140,7 @@
       link: 引流[Math.floor(Math.random() * 引流.length)], // 引流链接
       referer: "Hi!", // 存在访问来源时的欢迎文本
       welcome: ["Hi!"], // 未开启时间问好时的欢迎文本
-      skin: ["诶，想看看其他团员吗？", "替换后入场文本"], // 0更换模型提示文案  1更换完毕入场文案
+      skin: ["诶，想看看其他团员吗？", "替换后入场文本"], // 0 更换模型提示文案  1 更换完毕入场文案
       custom: [
         // 鼠标移上去提示元素
         { "selector": ".most-viewed-panel .most-viewed-item, .live-up-list .live-detail, .card .user-name, .user .name, .post-content .content-full a, .tag-list .content, .title, h2 a[title]", "type": "link" }
@@ -155,9 +155,9 @@
     onModelLoad: onModelLoad // 模型加载完成回调
   }
 
-  let pio_reference // pio实例
+  let pio_reference // pio 实例
 
-  function 加载圣·嘉然() {
+  function loadJiaRan() {
     pio_reference = new Paul_Pio(initConfig)
 
     pio_alignment = "right" // 右下角
@@ -186,11 +186,11 @@
 
     let touchList = [
       {
-        text: "点击展示文本1",
+        text: "点击展示文本 1",
         motion: "Idle"
       },
       {
-        text: "点击展示文本2",
+        text: "点击展示文本 2",
         motion: "Idle"
       }
     ]
@@ -232,13 +232,13 @@
 
       // 入场动作及文案
       initConfig.content.skin[1] = ["我是吃货担当 嘉然 Diana~", "嘉心糖们 想然然了没有呀~", "有人在吗？"]
-      playAction({ motion: "Tap抱阿草-左手" })
+      playAction({ motion: "Tap 抱阿草 - 左手" })
 
       // 点击动作及文案，不区分区域
       touchList = [
         {
           text: "嘉心糖屁用没有",
-          motion: "Tap生气 -领结"
+          motion: "Tap 生气 -领结"
         },
         {
           text: "有人急了，但我不说是谁~",
@@ -246,38 +246,38 @@
         },
         {
           text: "呜呜...呜呜呜....",
-          motion: "Tap哭 -眼角"
+          motion: "Tap 哭 -眼角"
         },
         {
           text: "想然然了没有呀~",
-          motion: "Tap害羞-中间刘海"
+          motion: "Tap 害羞 - 中间刘海"
         },
         {
           text: "阿草好软呀~",
-          motion: "Tap抱阿草-左手"
+          motion: "Tap 抱阿草 - 左手"
         },
         {
           text: "不要再戳啦！好痒！",
-          motion: "Tap摇头- 身体"
+          motion: "Tap 摇头 - 身体"
         },
         {
           text: "嗷呜~~~",
-          motion: "Tap耳朵-发卡"
+          motion: "Tap 耳朵 - 发卡"
         },
         {
-          text: "zzZ。。。",
+          text: "zzZ...",
           motion: "Leave"
         },
         {
           text: "哇！好吃的！",
-          motion: "Tap右头发"
+          motion: "Tap 右头发"
         },
       ]
 
     } else if (modelNmae === "Ava") {
-      initConfig.content.skin[1] = ["我是<s>拉胯</s>Gamer担当 向晚 AvA~", "怎么推流辣！", "AAAAAAAAAAvvvvAAA 向晚！"]
+      initConfig.content.skin[1] = ["我是<s>拉胯</s>Gamer 担当 向晚 AvA~", "怎么推流辣！", "AAAAAAAAAAvvvvAAA 向晚！"]
       playAction({
-        motion: "Tap左眼",
+        motion: "Tap 左眼",
         from: {
           "Part15": 1
         },
@@ -289,11 +289,11 @@
       touchList = [
         {
           text: "水母 水母~ 只是普通的生物",
-          motion: "Tap右手"
+          motion: "Tap 右手"
         },
         {
           text: "可爱的鸽子鸽子~我喜欢你~",
-          motion: "Tap胸口项链",
+          motion: "Tap 胸口项链",
           from: {
             "Part12": 1
           },
@@ -303,7 +303,7 @@
         },
         {
           text: "好...好兄弟之间喜欢很正常啦",
-          motion: "Tap中间刘海",
+          motion: "Tap 中间刘海",
           from: {
             "Part12": 1
           },
@@ -313,7 +313,7 @@
         },
         {
           text: "啊啊啊！怎么推流辣",
-          motion: "Tap右眼",
+          motion: "Tap 右眼",
           from: {
             "Part16": 1
           },
@@ -323,11 +323,11 @@
         },
         {
           text: "你怎么老摸我，我的身体是不是可有魅力",
-          motion: "Tap嘴"
+          motion: "Tap 嘴"
         },
         {
           text: "AAAAAAAAAAvvvvAAA 向晚！",
-          motion: "Tap左眼",
+          motion: "Tap 左眼",
           from: {
             "Part15": 1
           },
@@ -337,7 +337,7 @@
         }
       ]
 
-      // 钻头比较大，宽度*1.2倍，模型位移也要重新计算
+      // 钻头比较大，宽度*1.2 倍，模型位移也要重新计算
       canvas.width = model.width * 1.2
       model.x = canvas.width - model.width
 
@@ -360,7 +360,7 @@
     }
   }
 
-  // 检测是否处于iframe内嵌环境
+  // 检测是否处于 iframe 内嵌环境
   function inIframe() {
     try {
       return window.self !== window.top;
@@ -369,7 +369,7 @@
     }
   }
 
-  // 加载js或css，返回函数包裹的promise实例，用于顺序加载队列
+  // 加载 js 或 css，返回函数包裹的 promise 实例，用于顺序加载队列
   function loadSource(src) {
     return () => {
       return new Promise(function (resolve, reject) {
@@ -406,7 +406,7 @@
     }
   }
 
-  // 添加css
+  // 添加 css
   function addStyle(css) {
     if (typeof GM_addStyle != "undefined") {
       GM_addStyle(css);
