@@ -43,6 +43,7 @@ module.exports = {
   FONT_SERIF: [
     // '"LXGW WenKai"',
     'Bitter',
+    '"LXGW WenKai"',
     '"Noto Serif SC"',
     'SimSun',
     '"Times New Roman"',
