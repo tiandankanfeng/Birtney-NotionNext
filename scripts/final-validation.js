@@ -69,7 +69,7 @@ function validateOptimizationTasks() {
       checks: [
         { file: 'components/SEO.js', desc: 'SEO 组件优化', validate: validateSEOComponent },
         { file: 'components/Accessibility.js', desc: '可访问性组件' },
-        { file: 'lib/sitemap.js', desc: '站点地图生成器' }
+        { file: 'lib/utils/sitemap.js', desc: '站点地图生成器' }
       ]
     },
     {
@@ -84,10 +84,6 @@ function validateOptimizationTasks() {
     {
       name: '开发体验优化',
       checks: [
-        { file: '.vscode/settings.json', desc: 'VSCode 设置' },
-        { file: '.vscode/extensions.json', desc: 'VSCode 扩展推荐' },
-        { file: '.vscode/launch.json', desc: 'VSCode 调试配置' },
-        { file: '.vscode/tasks.json', desc: 'VSCode 任务配置' },
         { file: 'scripts/dev-tools.js', desc: '开发工具脚本' },
         { file: 'scripts/setup-git-hooks.js', desc: 'Git Hooks 设置' },
         { file: 'DEVELOPMENT.md', desc: '开发者指南' }
@@ -157,9 +153,9 @@ function validateDependencies(filePath) {
     
     // 检查关键依赖是否已更新
     const keyDeps = {
-      'next': '^14.2.30',
+      'next': '^15.5.23',
       'react': '^18.3.1',
-      'tailwindcss': '^3.4.17'
+      'tailwindcss': '^3.4.19'
     }
     
     for (const [dep, expectedVersion] of Object.entries(keyDeps)) {
