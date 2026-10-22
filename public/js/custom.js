@@ -68,6 +68,40 @@
   height: 240px;
 }
 
+#pio-container .pio-switch {
+  position: absolute;
+  right: 100%;
+  bottom: 12px;
+  margin-right: 8px;
+  padding: 7px 12px;
+  border: 1px solid #fdcf7b;
+  border-radius: 16px;
+  background: #fff;
+  color: #873a18;
+  font: 13px/1.5 sans-serif;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+#pio-container .pio-switch:hover {
+  background: #fff4de;
+}
+
+#pio-container .pio-switch:focus-visible {
+  outline: 2px solid #873a18;
+  outline-offset: 3px;
+}
+
+#pio-container.hidden .pio-switch {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  #pio-container .pio-switch {
+    display: none;
+  }
+}
+
 .pio-action .pio-home {
   display: none;
 }
@@ -162,9 +196,22 @@
 
     pio_alignment = "right" // 右下角
 
-    const closeBtn = document.querySelector(".pio-container .pio-action .pio-close")
-    closeBtn.insertAdjacentHTML('beforebegin', '<span class="pio-top"></span>')
-    const topBtn = document.querySelector(".pio-container .pio-action .pio-top")
+    setupMascotControls()
+
+    // Then apply style
+    pio_refresh_style()
+  }
+
+  function setupMascotControls(modelName) {
+    const container = document.getElementById("pio-container")
+    const closeBtn = container.querySelector(".pio-action .pio-close")
+    // Pio 在收起状态或移动端不会创建工具栏；恢复显示后再添加。
+    if (!closeBtn) return
+
+    if (!container.querySelector(".pio-top")) {
+      closeBtn.insertAdjacentHTML('beforebegin', '<span class="pio-top"></span>')
+    }
+    const topBtn = container.querySelector(".pio-top")
     // 返回顶部
     topBtn.onclick = function () {
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -173,8 +220,24 @@
       pio_reference.modules.render("想回到页面顶部吗？");
     };
 
-    // Then apply style
-    pio_refresh_style()
+    const skinBtn = container.querySelector(".pio-skin")
+    if (!skinBtn) return
+
+    let switchBtn = container.querySelector(".pio-switch")
+    if (!switchBtn) {
+      switchBtn = document.createElement("button")
+      switchBtn.type = "button"
+      switchBtn.className = "pio-switch"
+      switchBtn.textContent = "切换角色 ↻"
+      // 与原表情图标共用轮换入口，保持原有模型顺序和交互。
+      switchBtn.onclick = () => skinBtn.click()
+      container.appendChild(switchBtn)
+    }
+
+    const characterName = { Diana: "嘉然", Ava: "向晚" }[modelName]
+    const label = characterName ? `切换角色，当前：${characterName}` : "切换角色"
+    switchBtn.title = label
+    switchBtn.setAttribute("aria-label", label)
   }
 
   // 模型加载完成回调
@@ -358,6 +421,8 @@
         coreModel._partOpacities[idx] = 0
       })
     }
+
+    setupMascotControls(modelNmae)
   }
 
   // 检测是否处于 iframe 内嵌环境
