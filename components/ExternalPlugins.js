@@ -51,6 +51,7 @@ const ExternalPlugin = props => {
   const SAKURA = siteConfig('SAKURA', null, NOTION_CONFIG)
   const STARRY_SKY = siteConfig('STARRY_SKY', null, NOTION_CONFIG)
   const MUSIC_PLAYER = siteConfig('MUSIC_PLAYER', null, NOTION_CONFIG)
+  const WIDGET_PET = siteConfig('WIDGET_PET', null, NOTION_CONFIG)
   const NEST = siteConfig('NEST', null, NOTION_CONFIG)
   const FLUTTERINGRIBBON = siteConfig('FLUTTERINGRIBBON', null, NOTION_CONFIG)
   const COMMENT_TWIKOO_COUNT_ENABLE = siteConfig(
@@ -175,6 +176,10 @@ const ExternalPlugin = props => {
         loadExternalResource('/css/custom.css', 'css')
         loadExternalResource('/js/custom.js', 'js')
 
+        if (WIDGET_PET) {
+          loadExternalResource('/js/widget-pet.js', 'js')
+        }
+
         if (IMG_SHADOW) {
           loadExternalResource('/css/img-shadow.css', 'css')
         }
@@ -196,7 +201,7 @@ const ExternalPlugin = props => {
     return () => {
       cancelTasks.forEach(cancel => cancel?.())
     }
-  }, [ANIMATE_CSS_URL, IMG_SHADOW, externalCssList, externalJsList])
+  }, [ANIMATE_CSS_URL, IMG_SHADOW, WIDGET_PET, externalCssList, externalJsList])
 
   const router = useRouter()
   useEffect(() => {
