@@ -296,6 +296,41 @@ describe('formatNotionBlock', () => {
     ).toBe(true)
   })
 
+  it.each([
+    ['missing', ''],
+    ['empty', '?expirationTimestamp='],
+    ['whitespace', '?expirationTimestamp=%20%20'],
+    ['invalid', '?expirationTimestamp=not-a-timestamp'],
+    ['non-finite', '?expirationTimestamp=Infinity']
+  ])('ignores %s expiration values in cached URLs and embedded sources', (_, query) => {
+    const url = `https://images.example.com/cover.jpg${query}`
+
+    expect(hasExpiredSignedUrls({ signed_urls: { image: url } })).toBe(false)
+    expect(hasExpiredSignedUrls({
+      block: {
+        page: { value: { type: 'page', format: { page_cover: url } } },
+        audio: { value: { type: 'audio', properties: { source: [[url]] } } },
+        file: { value: { type: 'file', file: { url } } }
+      }
+    })).toBe(false)
+  })
+
+  it.each([
+    ['expired', -60 * 1000, true],
+    ['expiring within the buffer', 5 * 60 * 1000, true],
+    ['fresh', 60 * 60 * 1000, false]
+  ])('recognizes %s embedded Notion signed URLs', (_, offsetMs, expected) => {
+    const url = `https://file.notion.com/f/file.pdf?expirationTimestamp=${Date.now() + offsetMs}`
+
+    for (const block of [
+      { type: 'page', format: { page_cover: url } },
+      { type: 'audio', properties: { source: [[url]] } },
+      { type: 'file', file: { url } }
+    ]) {
+      expect(hasExpiredSignedUrls({ block: { item: { value: block } } })).toBe(expected)
+    }
+  })
+
   it('uses stable Notion signed entry for pdf preview URLs', () => {
     const recordMap = {
       signed_urls: {

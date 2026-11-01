@@ -153,7 +153,7 @@ function validateDependencies(filePath) {
     
     // 检查关键依赖是否已更新
     const keyDeps = {
-      'next': '^15.5.23',
+      'next': '^15.5.28',
       'react': '^18.3.1',
       'tailwindcss': '^3.4.19'
     }
