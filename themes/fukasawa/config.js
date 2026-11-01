@@ -13,6 +13,8 @@ const CONFIG = {
   FUKASAWA_MENU_TAG: true, // 显示标签
   FUKASAWA_MENU_ARCHIVE: true, // 显示归档
 
+  FUKASAWA_SIDEBAR_TAGS:
+    process.env.NEXT_PUBLIC_FUKASAWA_SIDEBAR_TAGS || true, // 侧栏标签云，不影响标签页和文章标签
   FUKASAWA_SIDEBAR_COLLAPSE_BUTTON: true, // 侧边栏折叠按钮
   FUKASAWA_SIDEBAR_COLLAPSE_SATUS_DEFAULT: false, // 侧边栏默认折叠收起
   FUKASAWA_SIDEBAR_COLLAPSE_ON_SCROLL: false // 侧边栏滚动时折叠 仅文章阅读页有效

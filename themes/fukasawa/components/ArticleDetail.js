@@ -8,6 +8,7 @@ import WWAds from '@/components/WWAds'
 import { siteConfig } from '@/lib/config'
 import { useGlobal } from '@/lib/global'
 import { formatDateFmt } from '@/lib/utils/formatDate'
+import { hasEnabledComments } from '@/lib/utils/comments'
 import SmartLink from '@/components/SmartLink'
 import ArticleAround from './ArticleAround'
 import TagItemMini from './TagItemMini'
@@ -108,9 +109,11 @@ export default function ArticleDetail(props) {
       {post?.type === 'Post' && <ArticleAround prev={prev} next={next} />}
 
       {/* 评论互动 */}
-      <div className='duration-200 shadow py-6 px-12 w-screen md:w-full overflow-x-auto dark:border-gray-700 bg-white dark:bg-hexo-black-gray'>
-        <Comment frontMatter={post} />
-      </div>
+      {hasEnabledComments(siteConfig) && post.comment !== 'Hide' && (
+        <div className='duration-200 shadow py-6 px-12 w-screen md:w-full overflow-x-auto dark:border-gray-700 bg-white dark:bg-hexo-black-gray'>
+          <Comment frontMatter={post} />
+        </div>
+      )}
     </div>
   )
 }

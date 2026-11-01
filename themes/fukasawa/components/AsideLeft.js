@@ -164,12 +164,13 @@ function AsideLeft(props) {
           <AdSlot type='in-article' />
         </section>
 
-        {router.asPath !== '/tag' && (
-          <section className='flex flex-col'>
-            <div className='w-12 my-4' />
-            <GroupTag tags={tagOptions} currentTag={currentTag} />
-          </section>
-        )}
+        {siteConfig('FUKASAWA_SIDEBAR_TAGS', null, CONFIG) &&
+          router.asPath !== '/tag' && (
+            <section className='flex flex-col'>
+              <div className='w-12 my-4' />
+              <GroupTag tags={tagOptions} currentTag={currentTag} />
+            </section>
+          )}
 
         {router.asPath !== '/category' && (
           <section className='flex flex-col'>
