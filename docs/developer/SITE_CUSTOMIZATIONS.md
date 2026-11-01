@@ -5,6 +5,7 @@
 ## 需要保留的配置与功能
 
 - `.env.production`：生产默认主题为 Fukasawa；关闭主题切换、调试入口、音乐播放器、宠物挂件、鼠标跟随、樱花和暗色星空；显式保留原有 Web 字体资源。
+- `public/komoribe-icon.png`：本站夜空人物头像的 128×128 PNG，由 `NEXT_PUBLIC_FAVICON` 指定为标签页图标；独立于上游默认 `favicon.ico`，同步时保留。它是当前 Notion 头像的静态副本，后续修改 Notion 头像不会自动更新此文件。
 - `blog.config.js`：本站作者、简介、域名、欢迎语和 5 秒页面重验证间隔。
 - `conf/plugin.config.js`：本站 Algolia 搜索配置；管理密钥只通过部署环境提供。
 - `conf/contact.config.js`、`conf/analytics.config.js`、`conf/font.config.js`：本站联系入口、统计配置和字体栈。
